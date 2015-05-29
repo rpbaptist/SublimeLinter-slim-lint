@@ -17,8 +17,12 @@ class SlimLint(RubyLinter):
 
     """Provides an interface to slim-lint."""
 
+    defaults = {
+        'bundle-exec': False
+    }
+
     syntax = 'ruby slim'
-    cmd = 'slim-lint'
+    executable = 'slim-lint'
     tempfile_suffix = '-'
     config_file = ('--config', '.slim-lint.yml', '~')
 
@@ -31,3 +35,11 @@ class SlimLint(RubyLinter):
         r'(?:(?P<error>\[E\])|(?P<warning>\[W\])) '
         r'(?P<message>[^`]*(?:`(?P<near>.+?)`)?.*)'
     )
+
+    def cmd(self):
+        """Dynamically generate the command line that is executed in order to lint."""
+
+        if self.get_view_settings().get('bundle-exec'):
+            return ('bundle', 'exec', self.executable)
+
+        return (self.executable_path)

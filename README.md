@@ -40,6 +40,12 @@ For general information on how SublimeLinter works with settings, please see [Se
 
 You can configure `slim-lint` options in the way you would from the command line, with `.slim-lint.yml` files. If a `.slim-lint.yml` file is not found in the file hierarchy starting with the linted file, your home directory will also be searched. For more information, see the [slim-lint page][slim-lint]. Default configuration file can be found [here](https://github.com/sds/slim-lint/blob/master/config/default.yml).
 
+In addition to the standard SublimeLinter and slim-lint settings, SublimeLinter-slim-lint provides its own settings.
+
+|Setting|Default|Description|
+|:------|:------|:----------|
+|bundle-exec|`False`|runs slim-lint as `bundle exec slim-lint` instead of `slim-lint`|
+
 ## Release History
 
 [See the CHANGELOG](CHANGELOG.md)
